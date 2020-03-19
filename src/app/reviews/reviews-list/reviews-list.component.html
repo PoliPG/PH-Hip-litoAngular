@@ -1,0 +1,9 @@
+<div class="reviews">
+    <h1>{{ msg }}</h1>
+    <h3>Aquí puedes consultar las últimas valoraciones que los usuarios han hecho sobre este producto</h3>
+    <ul id="reviews-list">
+      <li *ngFor="let reviewItem of reviewsList">
+            <ph-reviews-item [review]="reviewItem"></ph-reviews-item>
+      </li>
+    </ul>
+</div>

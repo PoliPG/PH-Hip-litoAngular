@@ -1,0 +1,22 @@
+<article class="ph-review">
+    <div class="ph-review-valoracion">
+        <div class="ph-review-valoracion-stars">
+            <span *ngFor="let star of [1,2,3,4,5];index as i">
+                <fa-icon *ngIf="review.rating >= star;else elseStarBlock" [icon]="faStar"></fa-icon>
+                <ng-template #elseStarBlock>
+                    <fa-icon [icon]="farStar"></fa-icon>
+                </ng-template>
+            </span>
+            <span class="ph-review-valoracion-total">{{ review.rating }}</span>
+        </div>
+        <span class="ph-review-valoracion-author">{{ review.author}} {{review.date | date: 'fullDate'}}</span>
+        <p>{{ review.comment}}</p>
+    </div>
+    <div class="ph-review-buttons">
+        <button [ngClass]="{'active': voted }" (click)="esUtil(review)"><fa-icon [icon]="faThumbsUp"></fa-icon>Es útil</button>
+        <span>{{review.useful_count}} 
+            <span *ngIf="voted == false; else elseBlock">Creen que es útil</span>
+            <ng-template #elseBlock><span>Creéis que es útil</span></ng-template>
+        </span>
+    </div>
+</article>
